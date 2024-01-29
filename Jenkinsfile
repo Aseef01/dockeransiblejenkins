@@ -10,7 +10,7 @@ pipeline{
         stage('SCM'){
             steps{
                 git credentialsId: 'github', 
-                    url: 'https://github.com/fiqhzim/dockeransiblejenkins.git'
+                    url: 'https://github.com/Aseef01/dockeransiblejenkins.git'
             }
         }
         
@@ -22,17 +22,17 @@ pipeline{
         
         stage('Docker Build'){
             steps{
-                sh "docker build . -t fiqhzim/website:${DOCKER_TAG} "
+                sh "docker build . -t aseef01/hariapp:${DOCKER_TAG} "
             }
         }
         
         stage('DockerHub Push'){
             steps{
-                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-                    sh "docker login -u fiqhzim -p ${dockerHubPwd}"
+                withCredentials([string(credentialsId: 'ejahla', variable: 'dockerHubPwd')]) {
+                    sh "docker login -u aseef01 -p ${dockerHubPwd}"
                 }
                 
-                sh "docker push fiqhzim/website:${DOCKER_TAG} "
+                sh "docker push aseef01/hariapp:${DOCKER_TAG} "
             }
         }
         
