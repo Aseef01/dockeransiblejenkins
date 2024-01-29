@@ -22,7 +22,7 @@
     - name: Start the container
       docker_container:
         name: website
-        image: "fiqhzim/website:{{DOCKER_TAG}}"
+        image: "aseef01/hariapp:{{DOCKER_TAG}}"
         state: started
         published_ports:
           0.0.0.0:8081:8080
